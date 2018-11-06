@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="ball"></div>
+<script>
+    function init() {
+        const a=Array.from({length:33},(s,x)=>x+1);
+        for (let i=0;i<6;i++){
+            let random=Math.random()*(a.length-i);
+            let j=i+Math.floor(random);
+            [a[i],a[j]]=[a[j],a[i]]
+        }
+        a.length = 6;
+        a.push(Array.from({length:16},(s,x)=>x+1)[Math.floor(Math.random()*15)]);
+        return a ;
+    }
+    let timer = setInterval(()=>{
+        document.getElementById('ball').innerHTML='双色球号码为'+init();
+    },100);
+    setTimeout(()=>{
+        clearInterval(timer);
+    },2000)
+</script>
+</body>
+</html>
