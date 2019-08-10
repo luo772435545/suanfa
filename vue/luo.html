@@ -10,17 +10,26 @@
 </head>
 <body>
 <div id="app">
-    <table class="cel">
+    {{message}}
+    <!--<table class="cel">
         <tr v-for="(item,index) in map">
             <td v-for="(nub,cindex) in item" @click="ccc(index,cindex)">{{nub}}</td>
         </tr>
-    </table>
+    </table>-->
+    <!--<div>
+        <transition-group name="flip-list" tag="table">
+            <tr v-for="(item,index) in map" :key="index">
+                <td v-for="(nub,cindex) in item" @click="ccc(index,cindex)">{{nub}}</td>
+            </tr>
+        </transition-group>
+    </div>-->
 </div>
 <script>
-    var el=new Vue({
+    var vm=new Vue({
         el: "#app",
         data(){
             return{
+                message:'',
               row:0, col:-1, n:9,dir:0,map:[],changnub:[]//填的数字
             }
         },
@@ -105,10 +114,19 @@
                 vm.start(vm.n)
             }
         },
-        mounted(){
+        created(){
             this.start(this.n);
         }
-    })
+    });
+
+    vm.message = 'new message' ;// 更改数据
+    //vm.$el.textContent = 'new message1111' // false
+
 </script>
+<style>
+    .flip-list-move {
+        transition: transform 1s;
+    }
+</style>
 </body>
 </html>

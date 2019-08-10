@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app" style="width: 1000px;margin: 0 auto;height: 100px;position: relative">
+    <div id="app1" style="width: 1000px;margin: 0 auto;height: 100px;transform: rotateX(180deg);position: absolute;top: 0;left: -15px"></div>
+</div>
+<div style="height: 1px;width: 1000px;"></div>
+
+<script>
+    var a = 0;
+    var b = 0;
+    var time = 60;
+    var timer =setInterval(()=>{
+        a++;
+        let dom =document.createElement('div');
+        dom.style.width=1+'px';
+        dom.style.height=1+'px';
+        dom.style.background='#7e5ebb';
+        dom.style.float='left';
+        dom.style.paddingBottom=Math.sin(b)*100+'px';
+        document.querySelector('#app').appendChild(dom);
+        if(a===360) {
+            clearInterval(timer)
+        }
+    },time/1000);
+    var timer1 =setInterval(()=>{
+        b++;
+        let dom =document.createElement('div');
+        dom.style.width=1+'px';
+        dom.style.height=1+'px';
+        dom.style.background='#7e5ebb';
+        dom.style.float='left';
+        dom.style.paddingTop=Math.sin(b)*100+'px';
+        document.querySelector('#app1').appendChild(dom);
+        if(b===360) {
+            clearInterval(timer1)
+        }
+    },time/1000)
+</script>
+</body>
+</html>
